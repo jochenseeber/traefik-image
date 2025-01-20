@@ -1,0 +1,18 @@
+#!/bin/sh
+export TRAEFIK_VERSION=3.2.2
+
+if ! docker buildx inspect traefik-builder; then
+    docker buildx create \
+        --name traefik-builder \
+        --driver docker-container \
+        --platform linux/arm64,linux/amd64 \
+        --bootstrap \
+        --use
+fi
+
+docker buildx build \
+    --builder traefik-builder \
+    --platform linux/arm64,linux/amd64 \
+    --build-arg TRAEFIK_VERSION=${TRAEFIK_VERSION} \
+    --tag jochen/traefik:v${TRAEFIK_VERSION} \
+    --push .
