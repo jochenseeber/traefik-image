@@ -15,4 +15,4 @@ See [this file](deployment.yml) for an example how to deploy on Kubernetes.
 
 ## Building
 
-Run `build` to create the image.
+Run `./build version [repo]` to create the image, e.g. `./build 3.3.2`.

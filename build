@@ -1,9 +1,15 @@
 #!/bin/sh
-export TRAEFIK_VERSION=3.2.2
+TRAEFIK_VERSION=$1
+DOCKER_REPO=${DOCKER_REPO:-jochen}
 
-if ! docker buildx inspect traefik-builder; then
+if [ "${TRAEFIK_VERSION}" = "" ]; then
+    echo "Usage: $0 <traefik version>"
+    exit 1
+fi
+
+if ! docker buildx inspect traefik; then
     docker buildx create \
-        --name traefik-builder \
+        --name traefik \
         --driver docker-container \
         --platform linux/arm64,linux/amd64 \
         --bootstrap \
@@ -14,5 +20,5 @@ docker buildx build \
     --builder traefik-builder \
     --platform linux/arm64,linux/amd64 \
     --build-arg TRAEFIK_VERSION=${TRAEFIK_VERSION} \
-    --tag jochen/traefik:v${TRAEFIK_VERSION} \
+    --tag ${DOCKER_REPO}/traefik:v${TRAEFIK_VERSION} \
     --push .
