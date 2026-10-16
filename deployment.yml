@@ -42,7 +42,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: jochen/traefik:3.7.15-scratch.0
+        image: jochen/traefik:3.7.12-scratch.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
