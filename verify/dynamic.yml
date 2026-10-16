@@ -1,0 +1,36 @@
+# Routes for `rake image:verify`. Each one answers only if its plugins loaded:
+# Traefik keeps serving /ping when a plugin fails ("Plugins are disabled"), so
+# the check requests these routes and asserts the bodies the Rakefile expects.
+#
+# The configuration keys follow each plugin's `.traefik.yml` testData.
+http:
+  routers:
+    static:
+      entryPoints: [web]
+      rule: Path(`/static`)
+      middlewares: [static]
+      service: noop@internal
+    rewritten:
+      entryPoints: [web]
+      rule: Path(`/rewritten`)
+      # Outermost first: rewriteBody buffers what staticResponse writes, then
+      # replaces the word before the body reaches the client.
+      middlewares: [rewrite, original]
+      service: noop@internal
+  middlewares:
+    static:
+      plugin:
+        staticResponse:
+          StatusCode: 200
+          Body: served by staticresponse
+    original:
+      plugin:
+        staticResponse:
+          StatusCode: 200
+          Body: original body
+    rewrite:
+      plugin:
+        rewriteBody:
+          rewrites:
+            - regex: original
+              replacement: rewritten
