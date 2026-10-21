@@ -4,7 +4,7 @@ This repository contains the Dockerfile to create a
 [Traefik](https://traefik.io/traefik/) image that allows Traefik to bind to
 service (low) ports without being started as root.
 
-Published as **`jochen/traefik:3.7.15-scratch.0`**.
+Published as **`jochen/traefik:3.7.16-scratch.0`**.
 
 The image is derived from the official
 [Traefik image](https://hub.docker.com/_/traefik) and sets
