@@ -2,7 +2,7 @@
 # the same image as `rake image:build`. The Rakefile passes every one of them
 # explicitly, and the mirror rewrites both together.
 ARG TRAEFIK_VERSION=3.7.16
-ARG BASE_DIGEST=sha256:6d3e069ee484ab1da5adfdda555a75eb9b1545ef09096a0cc7c3043101986a20
+ARG BASE_DIGEST=sha256:22a759fb803abb5c3a7ba5d5a55a201c5fb0fc8993d5c72c47a89075e64f1953
 ARG BUILDER_IMAGE=alpine:3.24.1
 ARG BUILDER_DIGEST=sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
 ARG REWRITEBODY_VERSION=v0.3.1
@@ -43,7 +43,7 @@ RUN set -ex; \
 FROM scratch
 ARG BASE_DIGEST
 ARG TRAEFIK_VERSION
-ARG IMAGE_VERSION=3.7.16-scratch.0
+ARG IMAGE_VERSION=3.7.16-scratch.1
 ARG SOURCE_COMMIT=unknown
 
 LABEL org.opencontainers.image.version="${IMAGE_VERSION}" \
