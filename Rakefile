@@ -1144,10 +1144,10 @@ end
 # (`rewritebody` -> `REWRITEBODY_VERSION`, `REWRITEBODY_CHECKSUM`).
 IMAGE = Image.new(
   repository: "jochen/traefik",
-  traefik_version: "3.7.15",
+  traefik_version: "3.7.17",
   # The manifest list behind traefik:v<version>. `rake image:versions` prints
   # the tag's current one.
-  base_digest: "sha256:0f6150202bc1fed72a7bd2107460eaa510e5b8a905f3fdb5b84f2c8619c33368",
+  base_digest: "sha256:30ff62491aacdb862ceb8c9edcf2627da638d7deafdd4b6dab32fe34f8aa3e90",
   # Only unpacks plugin archives and sets a file capability, but pinned all the
   # same so that a build is reproducible. Bumped by hand.
   builder_image: "alpine:3.24.1",

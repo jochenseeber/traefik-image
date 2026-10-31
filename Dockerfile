@@ -1,8 +1,8 @@
 # The defaults mirror IMAGE in the Rakefile, so a plain `docker build .` builds
 # the same image as `rake image:build`. The Rakefile passes every one of them
 # explicitly, and the mirror rewrites both together.
-ARG TRAEFIK_VERSION=3.7.15
-ARG BASE_DIGEST=sha256:0f6150202bc1fed72a7bd2107460eaa510e5b8a905f3fdb5b84f2c8619c33368
+ARG TRAEFIK_VERSION=3.7.17
+ARG BASE_DIGEST=sha256:30ff62491aacdb862ceb8c9edcf2627da638d7deafdd4b6dab32fe34f8aa3e90
 ARG BUILDER_IMAGE=alpine:3.24.1
 ARG BUILDER_DIGEST=sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b
 ARG REWRITEBODY_VERSION=v0.3.1
@@ -43,7 +43,7 @@ RUN set -ex; \
 FROM scratch
 ARG BASE_DIGEST
 ARG TRAEFIK_VERSION
-ARG IMAGE_VERSION=3.7.15-scratch.0
+ARG IMAGE_VERSION=3.7.17-scratch.0
 ARG SOURCE_COMMIT=unknown
 
 LABEL org.opencontainers.image.version="${IMAGE_VERSION}" \
