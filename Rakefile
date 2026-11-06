@@ -1147,13 +1147,13 @@ IMAGE = Image.new(
   traefik_version: "3.7.17",
   # The manifest list behind traefik:v<version>. `rake image:versions` prints
   # the tag's current one.
-  base_digest: "sha256:68ae5fe5b64ca166704b746a9e8afcd385e36b3f569a5691401bf652d57b3748",
+  base_digest: "sha256:f4bb143d1135a579b630ed491e17ec50f6f7c9c6a30585ff3d385471d2a86f5a",
   # Only unpacks plugin archives and sets a file capability, but pinned all the
   # same so that a build is reproducible. Bumped by hand.
   builder_image: "alpine:3.24.1",
   builder_digest: "sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b",
   # Bumped when the image changes but Traefik does not; reset on a version bump.
-  revision: 1,
+  revision: 2,
   platforms: ["linux/amd64", "linux/arm64"].map { |text| Image::Platform.parse(text) },
   plugins: [
     Image::Plugin.new(
